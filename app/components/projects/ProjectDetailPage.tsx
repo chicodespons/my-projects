@@ -179,7 +179,6 @@ const projectsData: Record<string, ProjectDetailData> = {
 };
 
 const ProjectDetailPage = ({ slug }: { slug: string }) => {
-  console.log(JSON.stringify(slug));
   // Get the project data based on the slug
   const project = projectsData[slug];
 
