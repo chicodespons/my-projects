@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaArrowLeft, FaLink } from "react-icons/fa";
+import { FaArrowLeft, FaGithub, FaLink } from "react-icons/fa";
 import { MediaItem } from "./MediaItem";
 import { MediaItemWrapper } from "./MediaItemWrapper";
 
@@ -14,6 +14,7 @@ interface ProjectDetailData {
   media?: MediaItem[]; // Combined gallery of images and videos
   tags: string[];
   liveUrl?: string;
+  githubUrl?: string;
   testimonial?: {
     quoteKey: string; // Translation key for quote
     authorKey: string; // Translation key for author
@@ -57,6 +58,7 @@ const projectsData: Record<string, ProjectDetailData> = {
       "Multilingual",
     ],
     liveUrl: "https://cedimed.brussels",
+    githubUrl: "https://github.com/chicodespons/CEDIMEDWebsite",
     testimonial: {
       quoteKey:
         "The new website perfectly meets our needs. The speed is excellent and we can manage all content ourselves through the CMS. The news section loads very quickly and thanks to the SEO optimization and Google Business integration, our online visibility has significantly improved. Thank you for the professional service and the excellent end result.",
@@ -99,6 +101,7 @@ const projectsData: Record<string, ProjectDetailData> = {
       "Database",
       "Ai Integration",
     ],
+    githubUrl: "https://github.com/chicodespons/deepgram-test",
   },
   "piano-etterbeek-website": {
     id: "project3",
@@ -223,19 +226,15 @@ const ProjectDetailPage = ({ slug }: { slug: string }) => {
 
         {/* Project header */}
         <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-12">
-          <div className="h-96 bg-gray-300 relative">
-            {/* Replace with your actual image component */}
+          <div className="w-full h-64 sm:h-72 md:h-96 bg-gray-300 relative">
             <Image
               src={project.image}
               alt={project.titleKey}
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              sizes="(max-width: 768px) 100vw, 1200px"
+              className="object-cover object-center"
+              priority
             />
-
-            {/* Placeholder for demo - replace with actual Image component */}
-            {/* <div className="absolute inset-0 flex items-center justify-center text-gray-500 text-2xl">
-              [Project Hero Image: {t(project.titleKey)}]
-            </div> */}
           </div>
 
           <div className="p-8">
@@ -259,14 +258,31 @@ const ProjectDetailPage = ({ slug }: { slug: string }) => {
                 <FaLink className="text-teal-700 mr-2" />
                 <div>
                   <p className="text-sm text-gray-600">Live project</p>
-                  <a
+                  <Link
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-medium text-teal-700 hover:underline"
                   >
                     Visit website
-                  </a>
+                  </Link>
+                </div>
+              </div>
+            )}
+
+            {project.githubUrl && (
+              <div className="flex items-center">
+                <FaGithub className="text-teal-700 mr-2" />
+                <div>
+                  <p className="text-sm text-gray-600">Github</p>
+                  <Link
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-teal-700 hover:underline"
+                  >
+                    View on Github
+                  </Link>
                 </div>
               </div>
             )}

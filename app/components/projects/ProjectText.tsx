@@ -212,7 +212,7 @@ const ProjectText = () => {
                   {/* Links */}
                   <div className="flex gap-4">
                     {project.liveUrl && (
-                      <a
+                      <Link
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -220,7 +220,7 @@ const ProjectText = () => {
                       >
                         <FaLink />
                         View Live
-                      </a>
+                      </Link>
                     )}
                     {project.moreInfo && (
                       <Link
