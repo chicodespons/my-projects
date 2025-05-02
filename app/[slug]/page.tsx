@@ -1,13 +1,10 @@
 import ProjectDetailPage from "../components/projects/ProjectDetailPage";
 
 interface ProjectDetailPageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
-export default function DetailPage({ params }: ProjectDetailPageProps) {
-  
-
-  return <ProjectDetailPage slug={params.slug} />;
+export default async function DetailPage({ params }: ProjectDetailPageProps) {
+  const { slug } = await params;
+  return <ProjectDetailPage slug={slug} />;
 }
