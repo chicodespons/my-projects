@@ -229,7 +229,7 @@ const ProjectDetailPage = ({ slug }: { slug: string }) => {
               src={project.image}
               alt={project.titleKey}
               fill
-              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
 
             {/* Placeholder for demo - replace with actual Image component */}
@@ -281,7 +281,10 @@ const ProjectDetailPage = ({ slug }: { slug: string }) => {
               <h2 className="text-3xl font-bold mb-6">About the project</h2>
 
               {project.fullDescriptionKeys.map((key, index) => (
-                <p key={index} className="text-lg mb-4">
+                <p
+                  key={index}
+                  className="text-lg text-justify tracking-wider mb-4"
+                >
                   {key}
                 </p>
               ))}
